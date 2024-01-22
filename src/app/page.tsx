@@ -5,7 +5,7 @@ import styles from "./page.module.css";
 import { Box, Button, Grid, IconButton } from "@chakra-ui/react";
 import Money from "@/components/Money";
 import GameDisplay from "@/components/GameDisplay";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useToast } from "@chakra-ui/react";
 import { Howl } from "howler";
 import { IoVolumeHigh, IoVolumeMute } from "react-icons/io5";
@@ -24,7 +24,8 @@ export default function Home() {
   const [moneyUpgradeValue, setMoneyUpgradeValue] = useState(0);
   const [multiplyFactorFU, setMultiplyFactorFU] = useState(0);
 
-  const clickMoney = useCallback(() => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const clickMoney = () => {
     setMoney(money + clickPower);
 
     if (clickSound && !muted) {
@@ -53,9 +54,10 @@ export default function Home() {
     setTimeout(() => {
       setSixthUpgradeDelay(false);
     }, sixthUpgradeDelayTime);
-  }, [money, clickPower, clickSound, muted, toast, sixthUpgradeDelayTime]);
+  };
 
-  const moneyEvery10s = useCallback(() => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const moneyEvery10s = () => {
     if (factoryUpgradeBought) {
       let multiplyFactorFUUpdated: number;
 
@@ -89,7 +91,7 @@ export default function Home() {
         ),
       });
     }
-  }, [factoryUpgradeBought, manyCoins, money, moneyUpgradeValue, multiplyFactorFU, muted, toast]);
+  };
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
