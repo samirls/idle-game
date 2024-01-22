@@ -56,7 +56,7 @@ export default function Home() {
   }, [money, clickPower, clickSound, muted, toast, sixthUpgradeDelayTime]);
 
   const moneyEvery10s = useCallback(() => {
-    if (factoryUpgradeBought && !muted) {
+    if (factoryUpgradeBought) {
       let multiplyFactorFUUpdated: number;
 
       if (multiplyFactorFU === 0) {
@@ -66,7 +66,7 @@ export default function Home() {
       }
       setMoney(money + multiplyFactorFUUpdated);
 
-      if (manyCoins) {
+      if (manyCoins && !muted) {
         manyCoins.play();
       }
 
@@ -89,15 +89,7 @@ export default function Home() {
         ),
       });
     }
-  }, [
-    factoryUpgradeBought,
-    manyCoins,
-    money,
-    moneyUpgradeValue,
-    multiplyFactorFU,
-    muted,
-    toast,
-  ]);
+  }, [factoryUpgradeBought, manyCoins, money, moneyUpgradeValue, multiplyFactorFU, muted, toast]);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -186,7 +178,7 @@ export default function Home() {
           fontSize="20px"
           size="sm"
           position="absolute"
-          top={50}
+          top={"40%"}
           right={2}
         />
       </Box>
