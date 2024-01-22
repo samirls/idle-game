@@ -57,7 +57,7 @@ export default function Home() {
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const moneyEvery10s = () => {
+  const moneyEvery1s = () => {
     if (factoryUpgradeBought) {
       let multiplyFactorFUUpdated: number;
 
@@ -103,13 +103,13 @@ export default function Home() {
 
     document.addEventListener("keydown", handler);
 
-    const intervalId = setInterval(moneyEvery10s, 1000);
+    const intervalId = setInterval(moneyEvery1s, 1000);
 
     return () => {
       document.removeEventListener("keydown", handler);
       clearInterval(intervalId);
     };
-  }, [clickMoney, fifthUpgradeBought, money, moneyEvery10s]);
+  }, [clickMoney, fifthUpgradeBought, money, moneyEvery1s]);
 
   useEffect(() => {
     setClickSound(new Howl({ src: ["/coin.mp3"] }));
