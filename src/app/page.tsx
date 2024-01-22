@@ -16,7 +16,7 @@ export default function Home() {
   const [manyCoins, setManyCoins] = useState<Howl | null>(null);
   const [muted, setMuted] = useState(false);
   const [clickPower, setClickPower] = useState(1);
-  const [money, setMoney] = useState(20000);
+  const [money, setMoney] = useState(0);
   const [fifthUpgradeBought, setFifthUpgradeBought] = useState(false);
   const [sixthUpgradeDelay, setSixthUpgradeDelay] = useState(false);
   const [sixthUpgradeDelayTime, setSixthUpgradeDelayTime] = useState(90);
