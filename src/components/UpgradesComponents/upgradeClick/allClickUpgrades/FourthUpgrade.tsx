@@ -26,7 +26,7 @@ export default function FourthUpgrade({
           coins per click
         </Box>
         <Box fontSize="16px" mt="-6px">
-          Cost: {upgradeFourCost}
+          Cost: {upgradeFourCost.toLocaleString()}
         </Box>
       </Box>
       <Box>

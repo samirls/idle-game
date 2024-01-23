@@ -16,7 +16,7 @@ export default function Home() {
   const [manyCoins, setManyCoins] = useState<Howl | null>(null);
   const [muted, setMuted] = useState(false);
   const [clickPower, setClickPower] = useState(1);
-  const [money, setMoney] = useState(0);
+  const [money, setMoney] = useState(100000);
   const [fifthUpgradeBought, setFifthUpgradeBought] = useState(false);
   const [sixthUpgradeDelay, setSixthUpgradeDelay] = useState(false);
   const [sixthUpgradeDelayTime, setSixthUpgradeDelayTime] = useState(90);
@@ -26,7 +26,7 @@ export default function Home() {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const clickMoney = () => {
-    setMoney(money + clickPower);
+    setMoney((prevMoney) => prevMoney + clickPower);
 
     if (clickSound && !muted) {
       clickSound.play();
@@ -66,7 +66,7 @@ export default function Home() {
       } else {
         multiplyFactorFUUpdated = moneyUpgradeValue * multiplyFactorFU;
       }
-      setMoney(money + multiplyFactorFUUpdated);
+      setMoney((prevMoney) => prevMoney + multiplyFactorFUUpdated);
 
       if (manyCoins && !muted) {
         manyCoins.play();
@@ -101,15 +101,12 @@ export default function Home() {
       }
     };
 
-    document.addEventListener("keydown", handler);
-
-    const intervalId = setInterval(moneyEvery1s, 1000);
+    document.addEventListener("keyup", handler);
 
     return () => {
-      document.removeEventListener("keydown", handler);
-      clearInterval(intervalId);
+      document.removeEventListener("keyup", handler);
     };
-  }, [clickMoney, fifthUpgradeBought, money, moneyEvery1s]);
+  }, [clickMoney, fifthUpgradeBought]);
 
   useEffect(() => {
     setClickSound(new Howl({ src: ["/coin.mp3"] }));
@@ -139,10 +136,19 @@ export default function Home() {
     }
   };
 
+  useEffect(() => {
+    const intervalId = setInterval(moneyEvery1s, 1000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [factoryUpgradeBought, moneyUpgradeValue, multiplyFactorFU, muted]);
+
   return (
     <>
       <Box height="100vh">
-        <Box display="flex" justifyContent="center" pt="20px" fontSize="30px">
+        <Box display="flex" justifyContent="center" pt="20px" fontSize="38px">
           Get Rich
         </Box>
         <Grid templateColumns="repeat(3, 1fr)" pt="50px">

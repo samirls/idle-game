@@ -23,7 +23,7 @@ export default function SixthFU({
           x 5 coins per second
         </Box>
         <Box fontSize="16px" mt="-6px">
-          Cost: {upgradeF6Cost}
+          Cost: {upgradeF6Cost.toLocaleString()}
         </Box>
       </Box>
       <Box>

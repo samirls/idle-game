@@ -34,7 +34,7 @@ export default function SixthUpgrade({
           is 10x shorter
         </Box>
         <Box fontSize="16px" mt="-6px">
-          Cost: {upgradeSixCost}
+          Cost: {upgradeSixCost.toLocaleString()}
         </Box>
       </Box>
       <Box>

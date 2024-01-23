@@ -11,6 +11,9 @@ import {
 } from "@chakra-ui/react";
 import UpgradeFactory from "./UpgradesComponents/upgradeFactory/UpgradeFactory";
 import UpgradeClick from "./UpgradesComponents/upgradeClick/UpgradeClick";
+import { GiWarPick } from "react-icons/gi";
+import { AiFillGold } from "react-icons/ai";
+import { FcFactory } from "react-icons/fc";
 
 interface UpgradesProps {
   money: number;
@@ -48,7 +51,7 @@ export default function Upgrades({
           fontSize="22px"
           fontWeight={600}
         >
-          Upgrades:
+          Upgrades
         </Box>
         <Box display="flex" justifyContent="center">
           <Tabs
@@ -58,8 +61,9 @@ export default function Upgrades({
             width="85%"
           >
             <TabList>
-              <Tab>Click Upgrades</Tab>
-              <Tab>Factory Upgrades</Tab>
+              <Tab gap={2}>Pickaxe <Box fontSize='30px'><GiWarPick /></Box></Tab>
+              <Tab gap={2}>Mine <Box fontSize='30px' color='yellow.300'><AiFillGold /></Box></Tab>
+              <Tab gap={2}>Factory <Box fontSize='30px'><FcFactory /></Box></Tab>
             </TabList>
             <TabIndicator
               mt="-1.5px"

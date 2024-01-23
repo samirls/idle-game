@@ -23,7 +23,7 @@ export default function ThirdFU({
           +60 coins per second
         </Box>
         <Box fontSize="16px" mt="-6px">
-          Cost: {upgradeF3Cost}
+          Cost: {upgradeF3Cost.toLocaleString()}
         </Box>
       </Box>
       <Box>

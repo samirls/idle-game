@@ -23,7 +23,7 @@ export default function FirstFU({
           +20 coins per second
         </Box>
         <Box fontSize="16px" mt="-6px">
-          Cost: {upgradeF1Cost}
+          Cost: {upgradeF1Cost.toLocaleString()}
         </Box>
       </Box>
       <Box>

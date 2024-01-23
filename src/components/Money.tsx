@@ -8,17 +8,20 @@ interface MoneyProps {
 }
 
 export default function Money({ money, clickPower }: MoneyProps) {
+
   return (
     <Box>
       <Box display="flex" justifyContent="center">
         <Box>
-          <Box>Your Money:</Box>
-          <Box>{money.toFixed()} gold coins</Box>
+          <Box fontSize="22px" fontWeight={600}>
+            Your Money
+          </Box>
+          <Box>{money.toLocaleString()} gold coins</Box>
           <PiCoinVerticalLight />
         </Box>
       </Box>
       <Box display="flex" justifyContent="center" pt="30px">
-        <Box >
+        <Box>
           <Box>Click Power:</Box>
           <Box>{clickPower}</Box>
           <LuMousePointerClick />

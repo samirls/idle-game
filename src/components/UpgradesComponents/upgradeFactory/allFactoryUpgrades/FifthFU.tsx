@@ -23,7 +23,7 @@ export default function FifthFU({
           x 2 coins per second
         </Box>
         <Box fontSize="16px" mt="-6px">
-          Cost: {upgradeF5Cost}
+          Cost: {upgradeF5Cost.toLocaleString()}
         </Box>
       </Box>
       <Box>
