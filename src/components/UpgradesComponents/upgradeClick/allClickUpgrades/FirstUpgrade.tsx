@@ -20,7 +20,7 @@ export default function FirstUpgrade({upgradeOneCost, money, upgradeOneAction}: 
           +1 coin per click
         </Box>
         <Box fontSize="16px" mt="-6px">
-          Cost: {upgradeOneCost.toLocaleString()}
+          Cost: {upgradeOneCost.toLocaleString()} gold coins.
         </Box>
       </Box>
       <Box>

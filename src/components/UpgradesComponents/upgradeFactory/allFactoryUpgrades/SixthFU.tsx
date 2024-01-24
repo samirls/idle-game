@@ -20,10 +20,10 @@ export default function SixthFU({
     >
       <Box>
         <Box fontSize="16px" fontWeight="500">
-          x 5 coins per second
+          + 5 coin multiplier
         </Box>
         <Box fontSize="16px" mt="-6px">
-          Cost: {upgradeF6Cost.toLocaleString()}
+          Cost: {upgradeF6Cost.toLocaleString()} gold coins.
         </Box>
       </Box>
       <Box>

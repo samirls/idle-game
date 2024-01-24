@@ -3,7 +3,7 @@
 import Upgrades from "@/components/Upgrades";
 import styles from "./page.module.css";
 import { Box, Button, Grid, IconButton } from "@chakra-ui/react";
-import Money from "@/components/Money";
+import Statistics from "@/components/Statistics";
 import GameDisplay from "@/components/GameDisplay";
 import { useEffect, useRef, useState } from "react";
 import { useToast } from "@chakra-ui/react";
@@ -16,13 +16,17 @@ export default function Home() {
   const [manyCoins, setManyCoins] = useState<Howl | null>(null);
   const [muted, setMuted] = useState(false);
   const [clickPower, setClickPower] = useState(1);
-  const [money, setMoney] = useState(100000);
+  const [money, setMoney] = useState(0);
   const [fifthUpgradeBought, setFifthUpgradeBought] = useState(false);
   const [sixthUpgradeDelay, setSixthUpgradeDelay] = useState(false);
   const [sixthUpgradeDelayTime, setSixthUpgradeDelayTime] = useState(90);
   const [factoryUpgradeBought, setFactoryUpgradeBought] = useState(false);
   const [moneyUpgradeValue, setMoneyUpgradeValue] = useState(0);
   const [multiplyFactorFU, setMultiplyFactorFU] = useState(0);
+  const [mineLicense, setMineLicense] = useState(false);
+  const [goldFactoryLicense, setGoldFactoryLicense] = useState(false);
+  const [moneyUpgradeDelay, setMoneyUpgradeDelay] = useState(1000);
+  const [multiplyFactorToDisplay, setMultiplyFactorToDisplay] = useState(0);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const clickMoney = () => {
@@ -39,12 +43,12 @@ export default function Home() {
         <Box
           color="gray.500"
           p={3}
-          bg="yellow.200"
+          bg="#f6dd5e80"
           fontWeight={700}
           borderRadius="50px"
           display="flex"
           justifyContent="center"
-          border="5px solid yellow"
+          border="5px solid #ffe32b80"
         >
           {`+ ${clickPower} coins`}
         </Box>
@@ -67,6 +71,7 @@ export default function Home() {
         multiplyFactorFUUpdated = moneyUpgradeValue * multiplyFactorFU;
       }
       setMoney((prevMoney) => prevMoney + multiplyFactorFUUpdated);
+      setMultiplyFactorToDisplay(multiplyFactorFUUpdated);
 
       if (manyCoins && !muted) {
         manyCoins.play();
@@ -79,12 +84,12 @@ export default function Home() {
           <Box
             color="gray.500"
             p={3}
-            bg="yellow.300"
+            bg="#f6e05e80"
             fontWeight={700}
             borderRadius="50px"
             display="flex"
             justifyContent="center"
-            border="5px solid yellow"
+            border="5px solid #fbff2b80"
           >
             {`+ ${multiplyFactorFUUpdated} coins from factories`}
           </Box>
@@ -92,6 +97,8 @@ export default function Home() {
       });
     }
   };
+
+  console.log(multiplyFactorToDisplay);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -109,14 +116,14 @@ export default function Home() {
   }, [clickMoney, fifthUpgradeBought]);
 
   useEffect(() => {
-    setClickSound(new Howl({ src: ["/coin.mp3"] }));
-    setManyCoins(new Howl({ src: ["/many-coins.mp3"] }));
+    setClickSound(new Howl({ src: ["/coin.mp3"], volume: 0.4 }));
+    setManyCoins(new Howl({ src: ["/many-coins.mp3"], volume: 0.3 }));
 
     const backgroundMusic = new Howl({
       src: ["/music.mp3"],
       autoplay: true,
       loop: true,
-      volume: 0.5,
+      volume: 0.7,
       mute: muted,
     });
 
@@ -137,13 +144,19 @@ export default function Home() {
   };
 
   useEffect(() => {
-    const intervalId = setInterval(moneyEvery1s, 1000);
+    const intervalId = setInterval(moneyEvery1s, moneyUpgradeDelay);
 
     return () => {
       clearInterval(intervalId);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [factoryUpgradeBought, moneyUpgradeValue, multiplyFactorFU, muted]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    factoryUpgradeBought,
+    moneyUpgradeValue,
+    multiplyFactorFU,
+    muted,
+    moneyUpgradeDelay,
+  ]);
 
   return (
     <>
@@ -164,9 +177,23 @@ export default function Home() {
             setMoneyUpgradeValue={setMoneyUpgradeValue}
             multiplyFactorFU={multiplyFactorFU}
             setMultiplyFactorFU={setMultiplyFactorFU}
+            mineLicense={mineLicense}
+            goldFactoryLicense={goldFactoryLicense}
+            moneyUpgradeDelay={moneyUpgradeDelay}
+            setMoneyUpgradeDelay={setMoneyUpgradeDelay}
           />
-          <GameDisplay />
-          <Money money={money} clickPower={clickPower} />
+          <GameDisplay
+            money={money}
+            setMoney={setMoney}
+            setMineLicense={setMineLicense}
+            setGoldFactoryLicense={setGoldFactoryLicense}
+          />
+          <Statistics
+            money={money}
+            clickPower={clickPower}
+            multiplyFactorToDisplay={multiplyFactorToDisplay}
+            moneyUpgradeDelay={moneyUpgradeDelay}
+          />
         </Grid>
 
         <Box display="flex" justifyContent="center" pt="30px">

@@ -1,16 +1,16 @@
 import { Box, Button } from "@chakra-ui/react";
 
-interface SecondUpgradeProps {
-  upgradeF2Cost: number;
+interface ThirdUpgrade2Props {
+  upgrade3Cost: number;
   money: number;
-  upgradeF2Action: () => void;
+  upgrade3Action: () => void;
 }
 
-export default function SecondFU({
-  upgradeF2Cost,
+export default function ThirdF2U({
+  upgrade3Cost,
   money,
-  upgradeF2Action,
-}: SecondUpgradeProps) {
+  upgrade3Action,
+}: ThirdUpgrade2Props) {
   return (
     <Box
       display="flex"
@@ -20,14 +20,14 @@ export default function SecondFU({
     >
       <Box>
         <Box fontSize="16px" fontWeight="500">
-          +40 coins per second
+          +500 coins per second
         </Box>
         <Box fontSize="16px" mt="-6px">
-          Cost: {upgradeF2Cost.toLocaleString()} gold coins.
+          Cost: {upgrade3Cost.toLocaleString()} gold coins.
         </Box>
       </Box>
       <Box>
-        <Button isDisabled={money < upgradeF2Cost} onClick={upgradeF2Action}>
+        <Button isDisabled={money < upgrade3Cost} onClick={upgrade3Action}>
           Buy
         </Button>
       </Box>

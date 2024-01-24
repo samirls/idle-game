@@ -23,7 +23,7 @@ export default function FourthFU({
           +100 coins per second
         </Box>
         <Box fontSize="16px" mt="-6px">
-          Cost: {upgradeF4Cost.toLocaleString()}
+          Cost: {upgradeF4Cost.toLocaleString()} gold coins.
         </Box>
       </Box>
       <Box>

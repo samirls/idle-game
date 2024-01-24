@@ -34,7 +34,7 @@ export default function SixthUpgrade({
           is 10x shorter
         </Box>
         <Box fontSize="16px" mt="-6px">
-          Cost: {upgradeSixCost.toLocaleString()}
+          Cost: {upgradeSixCost.toLocaleString()} gold coins.
         </Box>
       </Box>
       <Box>

@@ -14,6 +14,7 @@ import UpgradeClick from "./UpgradesComponents/upgradeClick/UpgradeClick";
 import { GiWarPick } from "react-icons/gi";
 import { AiFillGold } from "react-icons/ai";
 import { FcFactory } from "react-icons/fc";
+import UpgradeFactory2 from "./UpgradesComponents/upgradeFactory2/UpgradeFactory2";
 
 interface UpgradesProps {
   money: number;
@@ -27,6 +28,10 @@ interface UpgradesProps {
   setMoneyUpgradeValue: React.Dispatch<React.SetStateAction<number>>;
   multiplyFactorFU: number;
   setMultiplyFactorFU: React.Dispatch<React.SetStateAction<number>>;
+  mineLicense: boolean;
+  goldFactoryLicense: boolean;
+  moneyUpgradeDelay: number;
+  setMoneyUpgradeDelay: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export default function Upgrades({
@@ -40,7 +45,11 @@ export default function Upgrades({
   moneyUpgradeValue,
   setMoneyUpgradeValue,
   multiplyFactorFU,
-  setMultiplyFactorFU
+  setMultiplyFactorFU,
+  mineLicense,
+  goldFactoryLicense,
+  moneyUpgradeDelay,
+  setMoneyUpgradeDelay,
 }: UpgradesProps) {
   return (
     <Box display="flex" justifyContent="center" width="80%">
@@ -48,7 +57,7 @@ export default function Upgrades({
         <Box
           display="flex"
           justifyContent="center"
-          fontSize="22px"
+          fontSize="24px"
           fontWeight={600}
         >
           Upgrades
@@ -91,6 +100,20 @@ export default function Upgrades({
                   setMoneyUpgradeValue={setMoneyUpgradeValue}
                   multiplyFactorFU={multiplyFactorFU}
                   setMultiplyFactorFU={setMultiplyFactorFU}
+                  mineLicense={mineLicense}
+                />
+              </TabPanel>
+              <TabPanel>
+                <UpgradeFactory2
+                  money={money}
+                  setMoney={setMoney}
+                  moneyUpgradeValue={moneyUpgradeValue}
+                  setMoneyUpgradeValue={setMoneyUpgradeValue}
+                  multiplyFactorFU={multiplyFactorFU}
+                  setMultiplyFactorFU={setMultiplyFactorFU}
+                  goldFactoryLicense={goldFactoryLicense}
+                  moneyUpgradeDelay={moneyUpgradeDelay}
+                  setMoneyUpgradeDelay={setMoneyUpgradeDelay}
                 />
               </TabPanel>
             </TabPanels>

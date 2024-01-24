@@ -26,7 +26,7 @@ export default function SecondUpgrade({
           coins per click
         </Box>
         <Box fontSize="16px" mt="-6px">
-          Cost: {upgradeTwoCost.toLocaleString()}
+          Cost: {upgradeTwoCost.toLocaleString()} gold coins.
         </Box>
       </Box>
       <Box>

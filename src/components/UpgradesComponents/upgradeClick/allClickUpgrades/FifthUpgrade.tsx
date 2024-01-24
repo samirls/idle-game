@@ -37,7 +37,7 @@ export default function FifthUpgrade({
           earns money too
         </Box>
         <Box fontSize="16px" mt="-6px">
-          Cost: {upgradeFiveCost.toLocaleString()}
+          Cost: {upgradeFiveCost.toLocaleString()} gold coins.
         </Box>
       </Box>
       <Box>

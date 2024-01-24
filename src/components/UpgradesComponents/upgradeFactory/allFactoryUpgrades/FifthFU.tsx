@@ -20,10 +20,10 @@ export default function FifthFU({
     >
       <Box>
         <Box fontSize="16px" fontWeight="500">
-          x 2 coins per second
+          + 2 coin multiplier
         </Box>
         <Box fontSize="16px" mt="-6px">
-          Cost: {upgradeF5Cost.toLocaleString()}
+          Cost: {upgradeF5Cost.toLocaleString()} gold coins.
         </Box>
       </Box>
       <Box>

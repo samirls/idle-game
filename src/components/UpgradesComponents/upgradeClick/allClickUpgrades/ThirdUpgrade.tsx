@@ -26,7 +26,7 @@ export default function ThirdUpgrade({
           coins per click
         </Box>
         <Box fontSize="16px" mt="-6px">
-          Cost: {upgradeThreeCost.toLocaleString()}
+          Cost: {upgradeThreeCost.toLocaleString()} gold coins.
         </Box>
       </Box>
       <Box>

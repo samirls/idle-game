@@ -1,6 +1,5 @@
 TODO:
-need to change content when you have more money
+insert a graphic to show the evolution of the player gains
+insert volume control of music and sound in a modal
 need to inform the level of your upgrades
-need to tell an objective for the player
-need icons of the factories and clicks in upgrades
 need to inset animations
