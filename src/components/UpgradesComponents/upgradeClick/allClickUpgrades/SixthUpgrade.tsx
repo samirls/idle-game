@@ -27,13 +27,13 @@ export default function SixthUpgrade({
       gap={3}
     >
       <Box>
-        <Box fontSize="16px" fontWeight="500">
+        <Box fontSize="20px" fontWeight="500">
           <Box as="span" fontSize="20px" fontWeight={700}>
             Click Delay
           </Box>{" "}
           is 10x shorter
         </Box>
-        <Box fontSize="16px" mt="-6px">
+        <Box fontSize="18px" mt="-6px" fontWeight={300}>
           Cost: {upgradeSixCost.toLocaleString()} gold coins.
         </Box>
       </Box>

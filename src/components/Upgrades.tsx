@@ -15,12 +15,15 @@ import { GiWarPick } from "react-icons/gi";
 import { AiFillGold } from "react-icons/ai";
 import { FcFactory } from "react-icons/fc";
 import UpgradeFactory2 from "./UpgradesComponents/upgradeFactory2/UpgradeFactory2";
+import { kalam } from "@/app/ui/fonts";
 
 interface UpgradesProps {
   money: number;
   setMoney: React.Dispatch<React.SetStateAction<number>>;
   clickPower: number;
   setClickPower: React.Dispatch<React.SetStateAction<number>>;
+  clickPowerMultiplier: number;
+  setClickPowerMultiplier: React.Dispatch<React.SetStateAction<number>>;
   setFifthUpgradeBought: React.Dispatch<React.SetStateAction<boolean>>;
   setSixthUpgradeDelayTime: React.Dispatch<React.SetStateAction<number>>;
   setFactoryUpgradeBought: React.Dispatch<React.SetStateAction<boolean>>;
@@ -39,6 +42,8 @@ export default function Upgrades({
   setMoney,
   clickPower,
   setClickPower,
+  clickPowerMultiplier,
+  setClickPowerMultiplier,
   setFifthUpgradeBought,
   setSixthUpgradeDelayTime,
   setFactoryUpgradeBought,
@@ -57,8 +62,9 @@ export default function Upgrades({
         <Box
           display="flex"
           justifyContent="center"
-          fontSize="24px"
-          fontWeight={600}
+          fontSize="30px"
+          fontWeight={700}
+          className={kalam.className}
         >
           Upgrades
         </Box>
@@ -70,9 +76,9 @@ export default function Upgrades({
             width="85%"
           >
             <TabList>
-              <Tab gap={2}>Pickaxe <Box fontSize='30px'><GiWarPick /></Box></Tab>
-              <Tab gap={2}>Mine <Box fontSize='30px' color='yellow.300'><AiFillGold /></Box></Tab>
-              <Tab gap={2}>Factory <Box fontSize='30px'><FcFactory /></Box></Tab>
+              <Tab gap={2} fontSize='22px'>Pickaxe <Box fontSize='30px'><GiWarPick /></Box></Tab>
+              <Tab gap={2} fontSize='22px'>Mine <Box fontSize='30px' color='yellow.300'><AiFillGold /></Box></Tab>
+              <Tab gap={2} fontSize='22px'>Factory <Box fontSize='30px'><FcFactory /></Box></Tab>
             </TabList>
             <TabIndicator
               mt="-1.5px"
@@ -89,6 +95,8 @@ export default function Upgrades({
                   setClickPower={setClickPower}
                   setFifthUpgradeBought={setFifthUpgradeBought}
                   setSixthUpgradeDelayTime={setSixthUpgradeDelayTime}
+                  clickPowerMultiplier={clickPowerMultiplier}
+                  setClickPowerMultiplier={setClickPowerMultiplier}
                 />
               </TabPanel>
               <TabPanel>

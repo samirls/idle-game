@@ -3,17 +3,18 @@ import { PiCoinVerticalLight } from "react-icons/pi";
 import { LuMousePointerClick } from "react-icons/lu";
 import { GiCoins } from "react-icons/gi";
 import { RxLapTimer } from "react-icons/rx";
+import { kalam } from "@/app/ui/fonts";
 
 interface StatisticsProps {
   money: number;
-  clickPower: number;
+  clickPowerToDisplay: number;
   multiplyFactorToDisplay: number;
   moneyUpgradeDelay: number;
 }
 
 export default function Statistics({
   money,
-  clickPower,
+  clickPowerToDisplay,
   multiplyFactorToDisplay,
   moneyUpgradeDelay,
 }: StatisticsProps) {
@@ -54,10 +55,11 @@ export default function Statistics({
     <Box>
       <Box display="flex" justifyContent="center">
         <Box
-          fontSize="24px"
+          fontSize="30px"
           fontWeight={600}
           display="flex"
           justifyContent="center"
+          className={kalam.className}
         >
           Statistics
         </Box>
@@ -84,11 +86,12 @@ export default function Statistics({
             <Box fontSize='20px' fontWeight={500}>Click Power:</Box>
             <Box
               fontSize="30px"
+              color='red'
             >
               <LuMousePointerClick />
             </Box>
           </Box>
-          <Box>{clickPower}</Box>
+          <Box>{clickPowerToDisplay.toLocaleString()}</Box>
         </Box>
       </Box>
       <Box display="flex" justifyContent="center" pt="30px">
@@ -97,11 +100,12 @@ export default function Statistics({
             <Box fontSize='20px' fontWeight={500}>Coins / Time:</Box>
             <Box
               fontSize="30px"
+              color='blue'
             >
               <RxLapTimer />
             </Box>
           </Box>
-          <Box>{multiplyFactorToDisplay} gold coins / {displaySeconds()} second</Box>
+          <Box>{multiplyFactorToDisplay.toLocaleString()} gold coins / {displaySeconds()} second</Box>
         </Box>
       </Box>
 

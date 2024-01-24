@@ -19,13 +19,13 @@ export default function SecondUpgrade({
       gap={3}
     >
       <Box>
-        <Box fontSize="16px" fontWeight="500">
+        <Box fontSize="20px" fontWeight="500">
           <Box as="span" fontSize="20px" fontWeight={700}>
             +2
           </Box>{" "}
           coins per click
         </Box>
-        <Box fontSize="16px" mt="-6px">
+        <Box fontSize="18px" mt="-6px" fontWeight={300}>
           Cost: {upgradeTwoCost.toLocaleString()} gold coins.
         </Box>
       </Box>

@@ -16,10 +16,13 @@ export default function FirstUpgrade({upgradeOneCost, money, upgradeOneAction}: 
       gap={3}
     >
       <Box>
-        <Box fontSize="16px" fontWeight="500">
-          +1 coin per click
+      <Box fontSize="20px" >
+          <Box as="span" fontSize="20px" fontWeight={800}>
+            + 1 
+          </Box>{" "}
+          coin per click
         </Box>
-        <Box fontSize="16px" mt="-6px">
+        <Box fontSize="18px" mt="-6px" fontWeight={300}>
           Cost: {upgradeOneCost.toLocaleString()} gold coins.
         </Box>
       </Box>

@@ -30,13 +30,13 @@ export default function FifthUpgrade({
       gap={3}
     >
       <Box>
-        <Box fontSize="16px" fontWeight="500">
+        <Box fontSize="20px" fontWeight="500">
           <Box as="span" fontSize="20px" fontWeight={700}>
             Enter key
           </Box>{" "}
           earns money too
         </Box>
-        <Box fontSize="16px" mt="-6px">
+        <Box fontSize="18px" mt="-6px" fontWeight={300}>
           Cost: {upgradeFiveCost.toLocaleString()} gold coins.
         </Box>
       </Box>

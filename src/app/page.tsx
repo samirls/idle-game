@@ -5,18 +5,24 @@ import styles from "./page.module.css";
 import { Box, Button, Grid, IconButton } from "@chakra-ui/react";
 import Statistics from "@/components/Statistics";
 import GameDisplay from "@/components/GameDisplay";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useToast } from "@chakra-ui/react";
 import { Howl } from "howler";
-import { IoVolumeHigh, IoVolumeMute } from "react-icons/io5";
+import VolumeModal from "@/components/modals/volume/VolumeModal";
+import { frijole } from "./ui/fonts";
 
 export default function Home() {
   const toast = useToast();
+  const [backgroundMusicVolume, setBackgroundMusicVolume] = useState(0.7);
   const [clickSound, setClickSound] = useState<Howl | null>(null);
+  const [clickSoundVolume, setClickSoundVolume] = useState(0.4);
   const [manyCoins, setManyCoins] = useState<Howl | null>(null);
+  const [manyCoinsVolume, setManyCoinsVolume] = useState(0.3);
   const [muted, setMuted] = useState(false);
   const [clickPower, setClickPower] = useState(1);
-  const [money, setMoney] = useState(0);
+  const [clickPowerMultiplier, setClickPowerMultiplier] = useState(0)
+  const [clickPowerToDisplay, setClickPowerToDisplay] = useState(1)
+  const [money, setMoney] = useState(500000);
   const [fifthUpgradeBought, setFifthUpgradeBought] = useState(false);
   const [sixthUpgradeDelay, setSixthUpgradeDelay] = useState(false);
   const [sixthUpgradeDelayTime, setSixthUpgradeDelayTime] = useState(90);
@@ -28,9 +34,22 @@ export default function Home() {
   const [moneyUpgradeDelay, setMoneyUpgradeDelay] = useState(1000);
   const [multiplyFactorToDisplay, setMultiplyFactorToDisplay] = useState(0);
 
+  console.log(clickPowerMultiplier)
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const clickMoney = () => {
-    setMoney((prevMoney) => prevMoney + clickPower);
+
+    let clickMultiplierUpdated: number;
+
+    if (clickPowerMultiplier === 0) {
+      clickMultiplierUpdated = clickPower;
+    } else {
+      clickMultiplierUpdated = clickPower * clickPowerMultiplier;
+    }
+
+
+    setMoney((prevMoney) => prevMoney + clickMultiplierUpdated);
+    setClickPowerToDisplay(clickMultiplierUpdated);
 
     if (clickSound && !muted) {
       clickSound.play();
@@ -50,7 +69,7 @@ export default function Home() {
           justifyContent="center"
           border="5px solid #ffe32b80"
         >
-          {`+ ${clickPower} coins`}
+          {`+ ${clickMultiplierUpdated.toLocaleString()} coins`}
         </Box>
       ),
     });
@@ -91,7 +110,7 @@ export default function Home() {
             justifyContent="center"
             border="5px solid #fbff2b80"
           >
-            {`+ ${multiplyFactorFUUpdated} coins from factories`}
+            {`+ ${multiplyFactorFUUpdated.toLocaleString()} coins from factories`}
           </Box>
         ),
       });
@@ -116,21 +135,22 @@ export default function Home() {
   }, [clickMoney, fifthUpgradeBought]);
 
   useEffect(() => {
-    setClickSound(new Howl({ src: ["/coin.mp3"], volume: 0.4 }));
-    setManyCoins(new Howl({ src: ["/many-coins.mp3"], volume: 0.3 }));
+    setClickSound(new Howl({ src: ["/coin.mp3"], volume: clickSoundVolume }));
+    setManyCoins(new Howl({ src: ["/many-coins.mp3"], volume: manyCoinsVolume }));
 
     const backgroundMusic = new Howl({
       src: ["/music.mp3"],
       autoplay: true,
       loop: true,
-      volume: 0.7,
+      volume: backgroundMusicVolume,
       mute: muted,
     });
 
     return () => {
-      backgroundMusic.stop();
+      backgroundMusic?.stop();
     };
-  }, [muted]);
+
+  }, [ backgroundMusicVolume, clickSoundVolume, manyCoinsVolume, muted]);
 
   const toggleMute = () => {
     setMuted((prevMuted) => !prevMuted);
@@ -161,8 +181,8 @@ export default function Home() {
   return (
     <>
       <Box height="100vh">
-        <Box display="flex" justifyContent="center" pt="20px" fontSize="38px">
-          Get Rich
+        <Box display="flex" justifyContent="center" pt="20px" fontSize="46px" className={frijole.className}>
+          $ Get Rich $
         </Box>
         <Grid templateColumns="repeat(3, 1fr)" pt="50px">
           <Upgrades
@@ -170,6 +190,8 @@ export default function Home() {
             setMoney={setMoney}
             clickPower={clickPower}
             setClickPower={setClickPower}
+            clickPowerMultiplier={clickPowerMultiplier}
+            setClickPowerMultiplier={setClickPowerMultiplier}
             setFifthUpgradeBought={setFifthUpgradeBought}
             setSixthUpgradeDelayTime={setSixthUpgradeDelayTime}
             setFactoryUpgradeBought={setFactoryUpgradeBought}
@@ -190,7 +212,7 @@ export default function Home() {
           />
           <Statistics
             money={money}
-            clickPower={clickPower}
+            clickPowerToDisplay={clickPowerToDisplay}
             multiplyFactorToDisplay={multiplyFactorToDisplay}
             moneyUpgradeDelay={moneyUpgradeDelay}
           />
@@ -205,16 +227,15 @@ export default function Home() {
             {fifthUpgradeBought ? "Press Enter or Click" : "Click for coins"}
           </Button>
         </Box>
-        <IconButton
-          colorScheme="blue"
-          aria-label="Volume on/off"
-          icon={muted ? <IoVolumeMute /> : <IoVolumeHigh />}
-          onClick={toggleMute}
-          fontSize="20px"
-          size="sm"
-          position="absolute"
-          top={"40%"}
-          right={2}
+        <VolumeModal 
+          toggleMute={toggleMute}
+          muted={muted}
+          backgroundMusicVolume={backgroundMusicVolume}
+          setBackgroundMusicVolume={setBackgroundMusicVolume}
+          clickSoundVolume={clickSoundVolume}
+          setClickSoundVolume={setClickSoundVolume}
+          manyCoinsVolume={manyCoinsVolume}
+          setManyCoinsVolume={setManyCoinsVolume}
         />
       </Box>
     </>

@@ -19,13 +19,13 @@ export default function ThirdUpgrade({
       gap={3}
     >
       <Box>
-        <Box fontSize="16px" fontWeight="500">
+        <Box fontSize="20px" fontWeight="500">
           <Box as="span" fontSize="22px" fontWeight={800}>
             +5
           </Box>{" "}
           coins per click
         </Box>
-        <Box fontSize="16px" mt="-6px">
+        <Box fontSize="18px" mt="-6px" fontWeight={300}>
           Cost: {upgradeThreeCost.toLocaleString()} gold coins.
         </Box>
       </Box>

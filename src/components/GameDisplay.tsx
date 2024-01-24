@@ -14,6 +14,7 @@ import { useState } from "react";
 import { GiGoldMine } from "react-icons/gi";
 import ObjectiveShape from "./objectives/ObjectiveShape";
 import Image from "next/image";
+import { kalam } from "@/app/ui/fonts";
 
 interface GameDisplayProps {
   money: number;
@@ -66,19 +67,19 @@ export default function GameDisplay({
   };
 
   const objective5 = () => {
-    setMoney(money - 10000);
+    setMoney(money - 25000);
     setObjective5Bought(false);
     setObjective6Bought(true);
   };
 
   const objective6 = () => {
-    setMoney(money - 50000);
+    setMoney(money - 75000);
     setObjective6Bought(false);
     setObjective7Bought(true);
   };
 
   const objective7 = () => {
-    setMoney(money - 75000);
+    setMoney(money - 100000);
     setObjective7Bought(false);
     setObjective8Bought(true);
     setGoldFactoryLicense(true);
@@ -112,8 +113,9 @@ export default function GameDisplay({
       <Box
         display="flex"
         justifyContent="center"
-        fontSize="24px"
+        fontSize="30px"
         fontWeight={600}
+        className={kalam.className}
       >
         Actual Objective
       </Box>
@@ -165,7 +167,7 @@ export default function GameDisplay({
             icon={<MdOutlineScience />}
             description="Hire Scientists"
             color="green.600"
-            cost={10000}
+            cost={25000}
             functionToRun={objective5}
             buttonColor="cyan"
             money={money}
@@ -176,7 +178,7 @@ export default function GameDisplay({
             icon={<GiCongress />}
             description="Influence in the Congress"
             color="white"
-            cost={50000}
+            cost={75000}
             functionToRun={objective6}
             buttonColor="orange"
             money={money}
@@ -187,7 +189,7 @@ export default function GameDisplay({
             icon={<GiGoldStack />}
             description="Gold Factory License"
             color="yellow"
-            cost={75000}
+            cost={100000}
             functionToRun={objective7}
             buttonColor="orange"
             money={money}
