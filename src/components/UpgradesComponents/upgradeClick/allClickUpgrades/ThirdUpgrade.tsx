@@ -21,7 +21,7 @@ export default function ThirdUpgrade({
       <Box>
         <Box fontSize="20px" fontWeight="500">
           <Box as="span" fontSize="22px" fontWeight={800}>
-            +5
+            + 5
           </Box>{" "}
           coins per click
         </Box>

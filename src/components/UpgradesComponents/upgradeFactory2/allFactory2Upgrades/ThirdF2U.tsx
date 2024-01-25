@@ -19,10 +19,13 @@ export default function ThirdF2U({
       gap={3}
     >
       <Box>
-        <Box fontSize="16px" fontWeight="500">
-          +500 coins per second
+      <Box fontSize="20px">
+          <Box as="span" fontSize="20px" fontWeight="700">
+            + 500
+          </Box>{" "}
+          coins per second
         </Box>
-        <Box fontSize="16px" mt="-6px">
+        <Box fontSize="18px" fontWeight={300}>
           Cost: {upgrade3Cost.toLocaleString()} gold coins.
         </Box>
       </Box>

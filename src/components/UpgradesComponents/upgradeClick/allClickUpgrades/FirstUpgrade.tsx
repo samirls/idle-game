@@ -17,7 +17,7 @@ export default function FirstUpgrade({upgradeOneCost, money, upgradeOneAction}: 
     >
       <Box>
       <Box fontSize="20px" >
-          <Box as="span" fontSize="20px" fontWeight={800}>
+          <Box as="span" fontSize="20px" fontWeight={700}>
             + 1 
           </Box>{" "}
           coin per click

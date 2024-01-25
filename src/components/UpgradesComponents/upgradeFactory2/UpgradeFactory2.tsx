@@ -31,11 +31,11 @@ export default function UpgradeFactory2({
   moneyUpgradeDelay,
   setMoneyUpgradeDelay,
 }: UpgradeFactory2Props) {
-  const [upgrade1Cost, setUpgrade1Cost] = useState(5000);
+  const [upgrade1Cost, setUpgrade1Cost] = useState(8000);
   const [upgrade1Out, setUpgrade1Out] = useState(false);
-  const [upgrade2Cost, setUpgrade2Cost] = useState(6000);
-  const [upgrade3Cost, setUpgrade3Cost] = useState(12000);
-  const [upgrade4Cost, setUpgrade4Cost] = useState(18000);
+  const [upgrade2Cost, setUpgrade2Cost] = useState(7000);
+  const [upgrade3Cost, setUpgrade3Cost] = useState(14000);
+  const [upgrade4Cost, setUpgrade4Cost] = useState(21000);
 
   const upgrade1Action = () => {
     setMoney(money - upgrade1Cost);

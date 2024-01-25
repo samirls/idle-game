@@ -21,7 +21,7 @@ export default function SecondUpgrade({
       <Box>
         <Box fontSize="20px" fontWeight="500">
           <Box as="span" fontSize="20px" fontWeight={700}>
-            +2
+            + 2
           </Box>{" "}
           coins per click
         </Box>

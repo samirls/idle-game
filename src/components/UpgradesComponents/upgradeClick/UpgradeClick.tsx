@@ -18,6 +18,7 @@ interface UpgradeClickProps {
   setClickPowerMultiplier: React.Dispatch<React.SetStateAction<number>>;
   setFifthUpgradeBought: React.Dispatch<React.SetStateAction<boolean>>;
   setSixthUpgradeDelayTime: React.Dispatch<React.SetStateAction<number>>;
+  setClickPowerToDisplay: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export default function UpgradeClick({
@@ -29,6 +30,7 @@ export default function UpgradeClick({
   setClickPowerMultiplier,
   setFifthUpgradeBought,
   setSixthUpgradeDelayTime,
+  setClickPowerToDisplay,
 }: UpgradeClickProps) {
   
   const [upgradeOneCost, setUpgradeOneCost] = useState(10);
@@ -42,18 +44,21 @@ export default function UpgradeClick({
     setMoney(money - upgradeOneCost);
     setUpgradeOneCost(upgradeOneCost * 3);
     setClickPower(clickPower + 1);
+    setClickPowerToDisplay(clickPower + 1);
   };
 
   const upgradeTwoAction = () => {
     setMoney(money - upgradeTwoCost);
     setUpgradeTwoCost(upgradeTwoCost * 3);
     setClickPower(clickPower + 2);
+    setClickPowerToDisplay(clickPower + 2)
   };
 
   const upgradeThreeAction = () => {
     setMoney(money - upgradeThreeCost);
     setUpgradeThreeCost(upgradeThreeCost * 4);
     setClickPower(clickPower + 5);
+    setClickPowerToDisplay(clickPower + 5)
   };
 
   const upgradeFourAction = () => {

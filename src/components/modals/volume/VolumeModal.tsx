@@ -59,21 +59,21 @@ export default function VolumeModal({
       <Modal isOpen={isOpen} onClose={onClose} size="lg" isCentered>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Volume Options</ModalHeader>
+          <ModalHeader fontSize='24px'>Volume Options</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>
+          <ModalBody >
             <FormControl
               display="flex"
               alignItems="center"
               justifyContent="space-between"
             >
-              <FormLabel htmlFor="email-alerts" mb="0">
+              <FormLabel htmlFor="email-alerts" mb="0" fontSize='20px'>
                 Disable / Enable all sounds
               </FormLabel>
               <Switch onChange={toggleMute} isChecked={!muted} />
             </FormControl>
             <FormControl display="flex" alignItems="center" pt="10px">
-              <FormLabel htmlFor="email-alerts" mb="0" width="200px">
+              <FormLabel htmlFor="email-alerts" mb="0" width="200px" fontSize='20px'>
                 Music
               </FormLabel>
               <Slider
@@ -91,7 +91,7 @@ export default function VolumeModal({
               </Slider>
             </FormControl>
             <FormControl display="flex" alignItems="center" pt="10px">
-              <FormLabel htmlFor="email-alerts" mb="0" width="200px">
+              <FormLabel htmlFor="email-alerts" mb="0" width="200px" fontSize='20px'>
                 Click Sound
               </FormLabel>
               <Slider
@@ -109,7 +109,7 @@ export default function VolumeModal({
               </Slider>
             </FormControl>
             <FormControl display="flex" alignItems="center" pt="10px">
-              <FormLabel htmlFor="email-alerts" mb="0" width="200px">
+              <FormLabel htmlFor="email-alerts" mb="0" width="200px" fontSize='20px'>
                 Factory Sound
               </FormLabel>
               <Slider

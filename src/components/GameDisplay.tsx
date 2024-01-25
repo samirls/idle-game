@@ -15,6 +15,7 @@ import { GiGoldMine } from "react-icons/gi";
 import ObjectiveShape from "./objectives/ObjectiveShape";
 import Image from "next/image";
 import { kalam } from "@/app/ui/fonts";
+import EndingModal from "./modals/ending/EndingModal";
 
 interface GameDisplayProps {
   money: number;
@@ -40,6 +41,7 @@ export default function GameDisplay({
   const [objective9Bought, setObjective9Bought] = useState(false);
   const [objective10Bought, setObjective10Bought] = useState(false);
   const [objective11Bought, setObjective11Bought] = useState(false);
+  const [endingModalOpen, setEndingModalOpen] = useState(false);
 
   const objective1 = () => {
     setMoney(money - 500);
@@ -48,14 +50,14 @@ export default function GameDisplay({
   };
 
   const objective2 = () => {
-    setMoney(money - 1000);
+    setMoney(money - 3000);
     setObjective2Bought(false);
     setObjective3Bought(true);
     setMineLicense(true);
   };
 
   const objective3 = () => {
-    setMoney(money - 3000);
+    setMoney(money - 5000);
     setObjective3Bought(false);
     setObjective4Bought(true);
   };
@@ -79,7 +81,7 @@ export default function GameDisplay({
   };
 
   const objective7 = () => {
-    setMoney(money - 100000);
+    setMoney(money - 120000);
     setObjective7Bought(false);
     setObjective8Bought(true);
     setGoldFactoryLicense(true);
@@ -106,6 +108,7 @@ export default function GameDisplay({
   const objective11 = () => {
     setMoney(money - 1000000000);
     setObjective11Bought(false);
+    setEndingModalOpen(true);
   };
 
   return (
@@ -135,7 +138,7 @@ export default function GameDisplay({
             icon={<GiGoldMine />}
             description="Mine License"
             color="yellow"
-            cost={1000}
+            cost={3000}
             functionToRun={objective2}
             buttonColor="orange"
             money={money}
@@ -146,7 +149,7 @@ export default function GameDisplay({
             icon={<FaCar />}
             description="Car"
             color="blue.200"
-            cost={3000}
+            cost={5000}
             functionToRun={objective3}
             money={money}
           />
@@ -189,7 +192,7 @@ export default function GameDisplay({
             icon={<GiGoldStack />}
             description="Gold Factory License"
             color="yellow"
-            cost={100000}
+            cost={120000}
             functionToRun={objective7}
             buttonColor="orange"
             money={money}
@@ -237,6 +240,11 @@ export default function GameDisplay({
             buttonColor="orange"
             money={money}
           />
+        )}
+        {endingModalOpen && (
+          <Box display='flex' justifyContent='center'>
+            <EndingModal endingModalOpen={endingModalOpen}/>
+          </Box>
         )}
       </Box>
       <Box

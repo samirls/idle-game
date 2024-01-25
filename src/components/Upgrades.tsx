@@ -35,6 +35,7 @@ interface UpgradesProps {
   goldFactoryLicense: boolean;
   moneyUpgradeDelay: number;
   setMoneyUpgradeDelay: React.Dispatch<React.SetStateAction<number>>;
+  setClickPowerToDisplay: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export default function Upgrades({
@@ -55,6 +56,7 @@ export default function Upgrades({
   goldFactoryLicense,
   moneyUpgradeDelay,
   setMoneyUpgradeDelay,
+  setClickPowerToDisplay,
 }: UpgradesProps) {
   return (
     <Box display="flex" justifyContent="center" width="80%">
@@ -97,6 +99,7 @@ export default function Upgrades({
                   setSixthUpgradeDelayTime={setSixthUpgradeDelayTime}
                   clickPowerMultiplier={clickPowerMultiplier}
                   setClickPowerMultiplier={setClickPowerMultiplier}
+                  setClickPowerToDisplay={setClickPowerToDisplay}
                 />
               </TabPanel>
               <TabPanel>

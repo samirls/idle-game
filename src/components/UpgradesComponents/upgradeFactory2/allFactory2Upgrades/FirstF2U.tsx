@@ -21,15 +21,21 @@ export default function FirstF2U({
       gap={3}
     >
       <Box>
-        <Box fontSize="16px" fontWeight="500">
-          -100ms delay of coins per second
+        <Box fontSize="20px">
+          <Box as="span" fontSize="20px" fontWeight="700">
+            - 100ms delay
+          </Box>{" "}
+          of coins per second
         </Box>
-        <Box fontSize="16px" mt="-6px">
+        <Box fontSize="18px" fontWeight={300}>
           Cost: {upgrade1Cost.toLocaleString()} gold coins.
         </Box>
       </Box>
       <Box>
-        <Button isDisabled={money < upgrade1Cost || upgrade1Out} onClick={upgrade1Action}>
+        <Button
+          isDisabled={money < upgrade1Cost || upgrade1Out}
+          onClick={upgrade1Action}
+        >
           {upgrade1Out ? "Bought" : "Buy"}
         </Button>
       </Box>

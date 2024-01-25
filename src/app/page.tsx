@@ -22,7 +22,7 @@ export default function Home() {
   const [clickPower, setClickPower] = useState(1);
   const [clickPowerMultiplier, setClickPowerMultiplier] = useState(0)
   const [clickPowerToDisplay, setClickPowerToDisplay] = useState(1)
-  const [money, setMoney] = useState(500000);
+  const [money, setMoney] = useState(1000000000000);
   const [fifthUpgradeBought, setFifthUpgradeBought] = useState(false);
   const [sixthUpgradeDelay, setSixthUpgradeDelay] = useState(false);
   const [sixthUpgradeDelayTime, setSixthUpgradeDelayTime] = useState(90);
@@ -34,7 +34,6 @@ export default function Home() {
   const [moneyUpgradeDelay, setMoneyUpgradeDelay] = useState(1000);
   const [multiplyFactorToDisplay, setMultiplyFactorToDisplay] = useState(0);
 
-  console.log(clickPowerMultiplier)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const clickMoney = () => {
@@ -182,7 +181,7 @@ export default function Home() {
     <>
       <Box height="100vh">
         <Box display="flex" justifyContent="center" pt="20px" fontSize="46px" className={frijole.className}>
-          $ Get Rich $
+          $ Get RiCh $
         </Box>
         <Grid templateColumns="repeat(3, 1fr)" pt="50px">
           <Upgrades
@@ -203,6 +202,7 @@ export default function Home() {
             goldFactoryLicense={goldFactoryLicense}
             moneyUpgradeDelay={moneyUpgradeDelay}
             setMoneyUpgradeDelay={setMoneyUpgradeDelay}
+            setClickPowerToDisplay={setClickPowerToDisplay}
           />
           <GameDisplay
             money={money}
@@ -212,9 +212,9 @@ export default function Home() {
           />
           <Statistics
             money={money}
-            clickPowerToDisplay={clickPowerToDisplay}
             multiplyFactorToDisplay={multiplyFactorToDisplay}
             moneyUpgradeDelay={moneyUpgradeDelay}
+            clickPowerToDisplay={clickPowerToDisplay}
           />
         </Grid>
 

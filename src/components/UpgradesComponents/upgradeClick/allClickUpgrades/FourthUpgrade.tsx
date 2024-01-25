@@ -21,7 +21,7 @@ export default function FourthUpgrade({
       <Box>
         <Box>
           <Box as="span" fontSize="20px" fontWeight={800}>
-            + 2 coin multiplier
+            Coin multiplier + 2
           </Box>{" "}
           
         </Box>

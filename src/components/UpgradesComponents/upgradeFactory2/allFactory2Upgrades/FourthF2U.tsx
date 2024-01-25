@@ -19,10 +19,13 @@ export default function FourthF2U({
       gap={3}
     >
       <Box>
-        <Box fontSize="16px" fontWeight="500">
-          +1000 coins per second
+      <Box fontSize="20px">
+          <Box as="span" fontSize="20px" fontWeight="700">
+            + 1000
+          </Box>{" "}
+          coins per second
         </Box>
-        <Box fontSize="16px" mt="-6px">
+        <Box fontSize="18px" fontWeight={300}>
           Cost: {upgrade4Cost.toLocaleString()} gold coins.
         </Box>
       </Box>

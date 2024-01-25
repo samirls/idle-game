@@ -67,7 +67,7 @@ export default function Statistics({
       <Box display="flex" justifyContent="center" pt="30px">
         <Box width="250px">
           <Box display="flex" alignItems="center" gap={2}>
-            <Box fontSize='20px' fontWeight={500}>Total gold coins:</Box>
+            <Box fontSize='22px' fontWeight={500}>Total gold coins:</Box>
             <Box
               fontSize="30px"
               color="yellow.600"
@@ -77,13 +77,13 @@ export default function Statistics({
               {money > 1000 ? <GiCoins /> : <PiCoinVerticalLight/>}
             </Box>
           </Box>
-          <Box>{money.toLocaleString()}</Box>
+          <Box fontSize='20px' fontWeight={300}>{money.toLocaleString()}</Box>
         </Box>
       </Box>
       <Box display="flex" justifyContent="center" pt="30px">
         <Box width="250px">
           <Box display="flex" alignItems="center" gap={2}>
-            <Box fontSize='20px' fontWeight={500}>Click Power:</Box>
+            <Box fontSize='22px' fontWeight={500}>Click Power:</Box>
             <Box
               fontSize="30px"
               color='red'
@@ -91,13 +91,13 @@ export default function Statistics({
               <LuMousePointerClick />
             </Box>
           </Box>
-          <Box>{clickPowerToDisplay.toLocaleString()}</Box>
+          <Box fontSize='20px' fontWeight={300}>{clickPowerToDisplay.toLocaleString()}</Box>
         </Box>
       </Box>
       <Box display="flex" justifyContent="center" pt="30px">
         <Box width="250px">
           <Box display="flex" alignItems="center" gap={2}>
-            <Box fontSize='20px' fontWeight={500}>Coins / Time:</Box>
+            <Box fontSize='22px' fontWeight={500}>Coins / Time:</Box>
             <Box
               fontSize="30px"
               color='blue'
@@ -105,7 +105,7 @@ export default function Statistics({
               <RxLapTimer />
             </Box>
           </Box>
-          <Box>{multiplyFactorToDisplay.toLocaleString()} gold coins / {displaySeconds()} second</Box>
+          <Box fontSize='20px' fontWeight={300}>{multiplyFactorToDisplay.toLocaleString()} gold coins / {displaySeconds()} second</Box>
         </Box>
       </Box>
 

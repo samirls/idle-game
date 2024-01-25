@@ -18,11 +18,11 @@ export default function FifthFU({
       justifyContent="space-between"
       gap={3}
     >
-      <Box>
-        <Box fontSize="16px" fontWeight="500">
-          + 2 coin multiplier
-        </Box>
-        <Box fontSize="16px" mt="-6px">
+      <Box fontSize="20px">
+        <Box as="span" fontWeight={700}>
+          Coin multiplier + 2
+        </Box>{" "}
+        <Box fontSize="18px" fontWeight={300} mt="-6px">
           Cost: {upgradeF5Cost.toLocaleString()} gold coins.
         </Box>
       </Box>

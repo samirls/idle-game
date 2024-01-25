@@ -18,11 +18,12 @@ export default function FourthFU({
       justifyContent="space-between"
       gap={3}
     >
-      <Box>
-        <Box fontSize="16px" fontWeight="500">
-          +100 coins per second
-        </Box>
-        <Box fontSize="16px" mt="-6px">
+      <Box fontSize='20px'>
+        <Box as="span" fontSize='20px' fontWeight={700}>
+          + 100 
+        </Box>{" "}
+        coins per second
+        <Box fontSize="18px" fontWeight={300} mt="-6px">
           Cost: {upgradeF4Cost.toLocaleString()} gold coins.
         </Box>
       </Box>

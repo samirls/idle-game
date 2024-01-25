@@ -19,10 +19,10 @@ export default function SixthFU({
       gap={3}
     >
       <Box>
-        <Box fontSize="16px" fontWeight="500">
-          + 5 coin multiplier
-        </Box>
-        <Box fontSize="16px" mt="-6px">
+        <Box as="span" fontSize='20px' fontWeight={700}>
+          Coin multiplier + 5
+        </Box>{" "}
+        <Box fontSize="18px" fontWeight={300} mt="-6px">
           Cost: {upgradeF6Cost.toLocaleString()} gold coins.
         </Box>
       </Box>

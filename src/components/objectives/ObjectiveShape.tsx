@@ -51,8 +51,8 @@ export default function ObjectiveShape({
           isDisabled={(money < cost)}
         />
       </Box>
-      <Box fontWeight={600}>{description}</Box>
-      <Box>Cost: {cost.toLocaleString()} gold coins</Box>
+      <Box fontSize='20px'>{description}</Box>
+      <Box fontSize='18px' fontWeight={300}>Cost: {cost.toLocaleString()} gold coins</Box>
     </Box>
   );
 }

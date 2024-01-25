@@ -19,10 +19,13 @@ export default function FirstFU({
       gap={3}
     >
       <Box>
-        <Box fontSize="16px" fontWeight="500">
-          +20 coins per second
+        <Box fontSize="20px">
+          <Box as="span"  fontWeight={700}>
+            + 20
+          </Box>{" "}
+           coins per second
         </Box>
-        <Box fontSize="16px" mt="-6px">
+        <Box fontSize="18px" fontWeight={300} mt="-6px">
           Cost: {upgradeF1Cost.toLocaleString()} gold coins.
         </Box>
       </Box>
