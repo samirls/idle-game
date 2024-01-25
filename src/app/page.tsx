@@ -22,7 +22,7 @@ export default function Home() {
   const [clickPower, setClickPower] = useState(1);
   const [clickPowerMultiplier, setClickPowerMultiplier] = useState(0);
   const [clickPowerToDisplay, setClickPowerToDisplay] = useState(1);
-  const [money, setMoney] = useState(0);
+  const [money, setMoney] = useState(100000000000000);
   const [fifthUpgradeBought, setFifthUpgradeBought] = useState(false);
   const [sixthUpgradeDelay, setSixthUpgradeDelay] = useState(false);
   const [sixthUpgradeDelayTime, setSixthUpgradeDelayTime] = useState(90);
@@ -119,8 +119,6 @@ export default function Home() {
     }
   };
 
-  console.log(multiplyFactorToDisplay);
-
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.key === "Enter" && fifthUpgradeBought) {
@@ -153,7 +151,7 @@ export default function Home() {
     return () => {
       backgroundMusic?.stop();
     };
-  }, [backgroundMusicVolume, clickSoundVolume, manyCoinsVolume, muted]);
+  }, [backgroundMusicVolume, clickSoundVolume, manyCoinsVolume, muted, animation]);
 
   const toggleMute = () => {
     setMuted((prevMuted) => !prevMuted);
@@ -179,6 +177,8 @@ export default function Home() {
     multiplyFactorFU,
     muted,
     moneyUpgradeDelay,
+    manyCoinsVolume,
+    animation,
   ]);
 
   return (

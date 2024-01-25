@@ -47,6 +47,8 @@ export default function OptionsModal({
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  console.log(manyCoinsVolume)
+
   return (
     <>
       <IconButton
@@ -103,7 +105,7 @@ export default function OptionsModal({
               <Slider
                 aria-label="slider-ex-1"
                 defaultValue={backgroundMusicVolume}
-                min={0}
+                min={0.0}
                 max={1}
                 step={0.1}
                 onChange={(value) => setBackgroundMusicVolume(value)}
@@ -126,7 +128,7 @@ export default function OptionsModal({
               <Slider
                 aria-label="slider-ex-1"
                 defaultValue={clickSoundVolume}
-                min={0}
+                min={0.0}
                 max={1}
                 step={0.1}
                 onChange={(value) => setClickSoundVolume(value)}
@@ -149,7 +151,7 @@ export default function OptionsModal({
               <Slider
                 aria-label="slider-ex-1"
                 defaultValue={manyCoinsVolume}
-                min={0}
+                min={0.0}
                 max={1}
                 step={0.1}
                 onChange={(value) => setManyCoinsVolume(value)}
