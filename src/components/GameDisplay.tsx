@@ -10,7 +10,7 @@ import { GiGoldStack } from "react-icons/gi";
 import { GiCongress } from "react-icons/gi";
 import { GiTrophyCup } from "react-icons/gi";
 import { MdOutlineScience } from "react-icons/md";
-import { useState } from "react";
+import { ReactElement, useState } from "react";
 import { GiGoldMine } from "react-icons/gi";
 import ObjectiveShape from "./objectives/ObjectiveShape";
 import Image from "next/image";
@@ -24,91 +24,140 @@ interface GameDisplayProps {
   setGoldFactoryLicense: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+interface Objective {
+  id: number;
+  icon: ReactElement;
+  icon2?: ReactElement;
+  description: string;
+  color: string;
+  buttonColor?: string;
+  cost: number;
+  nextObjective?: number;
+  grantLicense?: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 export default function GameDisplay({
   money,
   setMoney,
   setMineLicense,
   setGoldFactoryLicense,
 }: GameDisplayProps) {
-  const [objective1Bought, setObjective1Bought] = useState(true);
-  const [objective2Bought, setObjective2Bought] = useState(false);
-  const [objective3Bought, setObjective3Bought] = useState(false);
-  const [objective4Bought, setObjective4Bought] = useState(false);
-  const [objective5Bought, setObjective5Bought] = useState(false);
-  const [objective6Bought, setObjective6Bought] = useState(false);
-  const [objective7Bought, setObjective7Bought] = useState(false);
-  const [objective8Bought, setObjective8Bought] = useState(false);
-  const [objective9Bought, setObjective9Bought] = useState(false);
-  const [objective10Bought, setObjective10Bought] = useState(false);
-  const [objective11Bought, setObjective11Bought] = useState(false);
   const [endingModalOpen, setEndingModalOpen] = useState(false);
+  const [currentObjective, setCurrentObjective] = useState(1);
 
-  const objective1 = () => {
-    setMoney(money - 500);
-    setObjective1Bought(false);
-    setObjective2Bought(true);
-  };
+  const objectives = [
+    {
+      id: 1,
+      icon: <FcDiploma2 />,
+      description: "University Degree",
+      color: "orange",
+      cost: 500,
+      nextObjective: 2,
+    },
+    {
+      id: 2,
+      icon: <GiGoldMine />,
+      description: "Mine License",
+      color: "yellow",
+      cost: 3000,
+      nextObjective: 3,
+      grantLicense: setMineLicense,
+    },
+    {
+      id: 3,
+      icon: <FaCar />,
+      description: "Car",
+      color: "blue.200",
+      cost: 5000,
+      nextObjective: 4,
+    },
+    {
+      id: 4,
+      icon: <BsFillHouseFill />,
+      description: "House",
+      color: "gray.500",
+      cost: 10000,
+      buttonColor: "gray",
+      nextObjective: 5,
+    },
+    {
+      id: 5,
+      icon: <MdOutlineScience />,
+      description: "Hire Scientists",
+      color: "green.600",
+      cost: 25000,
+      buttonColor: "cyan",
+      nextObjective: 6,
+    },
+    {
+      id: 6,
+      icon: <GiCongress />,
+      description: "Influence in the Congress",
+      color: "white",
+      cost: 75000,
+      buttonColor: "orange",
+      nextObjective: 7,
+    },
+    {
+      id: 7,
+      icon: <GiGoldStack />,
+      description: "Gold Factory License",
+      color: "yellow",
+      cost: 120000,
+      buttonColor: "orange",
+      nextObjective: 8,
+      grantLicense: setGoldFactoryLicense,
+    },
+    {
+      id: 8,
+      icon: <FaCar />,
+      description: "Luxury Car",
+      color: "red",
+      cost: 1000000,
+      buttonColor: "gray",
+      nextObjective: 9,
+    },
+    {
+      id: 9,
+      icon: <BsFillHouseFill />,
+      icon2: <GiHomeGarage />,
+      description: "Luxury House",
+      color: "black",
+      cost: 10000000,
+      buttonColor: "gray",
+      nextObjective: 10,
+    },
+    {
+      id: 10,
+      icon: <LiaFighterJetSolid />,
+      description: "Private Plane",
+      color: "black",
+      cost: 100000000,
+      buttonColor: "cyan",
+      nextObjective: 11,
+    },
+    {
+      id: 11,
+      icon: <GiTrophyCup  />,
+      description: "Billionaire",
+      color: "yellow",
+      cost: 1000000000,
+      buttonColor: "orange",
+    },
+  ];
 
-  const objective2 = () => {
-    setMoney(money - 3000);
-    setObjective2Bought(false);
-    setObjective3Bought(true);
-    setMineLicense(true);
-  };
+  const handleObjectiveCompletion = (objective: Objective) => {
+    setMoney(money - objective.cost);
 
-  const objective3 = () => {
-    setMoney(money - 5000);
-    setObjective3Bought(false);
-    setObjective4Bought(true);
-  };
+    if (objective.grantLicense) {
+      objective.grantLicense(true);
+    }
 
-  const objective4 = () => {
-    setMoney(money - 10000);
-    setObjective4Bought(false);
-    setObjective5Bought(true);
-  };
-
-  const objective5 = () => {
-    setMoney(money - 25000);
-    setObjective5Bought(false);
-    setObjective6Bought(true);
-  };
-
-  const objective6 = () => {
-    setMoney(money - 75000);
-    setObjective6Bought(false);
-    setObjective7Bought(true);
-  };
-
-  const objective7 = () => {
-    setMoney(money - 120000);
-    setObjective7Bought(false);
-    setObjective8Bought(true);
-    setGoldFactoryLicense(true);
-  };
-
-  const objective8 = () => {
-    setMoney(money - 1000000);
-    setObjective8Bought(false);
-    setObjective9Bought(true);
-  };
-
-  const objective9 = () => {
-    setMoney(money - 10000000);
-    setObjective9Bought(false);
-    setObjective10Bought(true);
-  };
-
-  const objective10 = () => {
-    setMoney(money - 100000000);
-    setObjective10Bought(false);
-    setObjective11Bought(true);
-  };
-
-  const objective11 = () => {
-    setMoney(money - 1000000000);
-    setObjective11Bought(false);
-    setEndingModalOpen(true);
+    if (objective.nextObjective) {
+      setCurrentObjective(objective.nextObjective);
+    } else {
+      setEndingModalOpen(true);
+    }
   };
 
   return (
@@ -123,127 +172,25 @@ export default function GameDisplay({
         Actual Objective
       </Box>
       <Box pt="25px">
-        {objective1Bought && (
-          <ObjectiveShape
-            icon={<FcDiploma2 />}
-            description="University Degree"
-            cost={500}
-            functionToRun={objective1}
-            buttonColor="orange"
-            money={money}
-          />
-        )}
-        {objective2Bought && (
-          <ObjectiveShape
-            icon={<GiGoldMine />}
-            description="Mine License"
-            color="yellow"
-            cost={3000}
-            functionToRun={objective2}
-            buttonColor="orange"
-            money={money}
-          />
-        )}
-        {objective3Bought && (
-          <ObjectiveShape
-            icon={<FaCar />}
-            description="Car"
-            color="blue.200"
-            cost={5000}
-            functionToRun={objective3}
-            money={money}
-          />
-        )}
-        {objective4Bought && (
-          <ObjectiveShape
-            icon={<BsFillHouseFill />}
-            description="House"
-            color="gray.500"
-            cost={10000}
-            functionToRun={objective4}
-            buttonColor="gray"
-            money={money}
-          />
-        )}
-        {objective5Bought && (
-          <ObjectiveShape
-            icon={<MdOutlineScience />}
-            description="Hire Scientists"
-            color="green.600"
-            cost={25000}
-            functionToRun={objective5}
-            buttonColor="cyan"
-            money={money}
-          />
-        )}
-        {objective6Bought && (
-          <ObjectiveShape
-            icon={<GiCongress />}
-            description="Influence in the Congress"
-            color="white"
-            cost={75000}
-            functionToRun={objective6}
-            buttonColor="orange"
-            money={money}
-          />
-        )}
-        {objective7Bought && (
-          <ObjectiveShape
-            icon={<GiGoldStack />}
-            description="Gold Factory License"
-            color="yellow"
-            cost={120000}
-            functionToRun={objective7}
-            buttonColor="orange"
-            money={money}
-          />
-        )}
-        {objective8Bought && (
-          <ObjectiveShape
-            icon={<FaCar />}
-            description="Luxury Car"
-            color="red"
-            cost={1000000}
-            functionToRun={objective8}
-            buttonColor="gray"
-            money={money}
-          />
-        )}
-        {objective9Bought && (
-          <ObjectiveShape
-            icon={<BsFillHouseFill />}
-            icon2={<GiHomeGarage />}
-            description="Luxury House"
-            cost={10000000}
-            functionToRun={objective9}
-            buttonColor="gray"
-            money={money}
-          />
-        )}
-        {objective10Bought && (
-          <ObjectiveShape
-            icon={<LiaFighterJetSolid />}
-            description="Private Plane"
-            cost={100000000}
-            functionToRun={objective10}
-            buttonColor="cyan"
-            money={money}
-          />
-        )}
-        {objective11Bought && (
-          <ObjectiveShape
-            icon={<GiTrophyCup />}
-            description="Billionaire"
-            color="yellow"
-            cost={1000000000}
-            functionToRun={objective11}
-            buttonColor="orange"
-            money={money}
-          />
+        {objectives.map(
+          (objective) =>
+            objective.id === currentObjective && (
+              <ObjectiveShape
+                key={objective.id}
+                icon={objective.icon}
+                icon2={objective.icon2}
+                description={objective.description}
+                color={objective.color}
+                cost={objective.cost}
+                functionToRun={() => handleObjectiveCompletion(objective)}
+                buttonColor={objective.buttonColor}
+                money={money}
+              />
+            )
         )}
         {endingModalOpen && (
-          <Box display='flex' justifyContent='center'>
-            <EndingModal endingModalOpen={endingModalOpen}/>
+          <Box display="flex" justifyContent="center">
+            <EndingModal endingModalOpen={endingModalOpen} />
           </Box>
         )}
       </Box>

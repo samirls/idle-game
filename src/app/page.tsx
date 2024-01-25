@@ -1,7 +1,6 @@
 "use client";
 
 import Upgrades from "@/components/Upgrades";
-import styles from "./page.module.css";
 import { Box, Button, Grid, IconButton } from "@chakra-ui/react";
 import Statistics from "@/components/Statistics";
 import GameDisplay from "@/components/GameDisplay";
@@ -22,7 +21,7 @@ export default function Home() {
   const [clickPower, setClickPower] = useState(1);
   const [clickPowerMultiplier, setClickPowerMultiplier] = useState(0)
   const [clickPowerToDisplay, setClickPowerToDisplay] = useState(1)
-  const [money, setMoney] = useState(1000000000000);
+  const [money, setMoney] = useState(10000000000000);
   const [fifthUpgradeBought, setFifthUpgradeBought] = useState(false);
   const [sixthUpgradeDelay, setSixthUpgradeDelay] = useState(false);
   const [sixthUpgradeDelayTime, setSixthUpgradeDelayTime] = useState(90);
