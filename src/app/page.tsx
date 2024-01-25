@@ -183,7 +183,22 @@ export default function Home() {
 
   return (
     <>
-      <Box height="100vh">
+      <Box 
+        display={{ base: "block", lg: "none" }}
+      >
+        <Box
+          display='flex'
+          justifyContent='center'
+          alignItems='center'
+          height='100vh'
+          p={10}
+          fontSize='2rem'
+          textAlign='justify'
+        >
+          Sorry!This game is not available YET for phones. Please use: Windows, Mac or Linux. Or come here later!
+        </Box>
+      </Box>
+      <Box height="100vh" display={{ base: "none", lg: "block" }}>
         <Box
           display="flex"
           justifyContent="center"
