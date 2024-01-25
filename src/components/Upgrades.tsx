@@ -68,7 +68,9 @@ export default function Upgrades({
           fontWeight={700}
           className={kalam.className}
         >
-          Upgrades
+          <Box>
+            Upgrades
+          </Box>
         </Box>
         <Box display="flex" justifyContent="center">
           <Tabs
@@ -78,9 +80,24 @@ export default function Upgrades({
             width="85%"
           >
             <TabList>
-              <Tab gap={2} fontSize='22px'>Pickaxe <Box fontSize='30px'><GiWarPick /></Box></Tab>
-              <Tab gap={2} fontSize='22px'>Mine <Box fontSize='30px' color='yellow.300'><AiFillGold /></Box></Tab>
-              <Tab gap={2} fontSize='22px'>Factory <Box fontSize='30px'><FcFactory /></Box></Tab>
+              <Tab gap={2} fontSize="22px">
+                Pickaxe{" "}
+                <Box fontSize="30px">
+                  <GiWarPick />
+                </Box>
+              </Tab>
+              <Tab gap={2} fontSize="22px">
+                Mine{" "}
+                <Box fontSize="30px" color="yellow.300">
+                  <AiFillGold />
+                </Box>
+              </Tab>
+              <Tab gap={2} fontSize="22px">
+                Factory{" "}
+                <Box fontSize="30px">
+                  <FcFactory />
+                </Box>
+              </Tab>
             </TabList>
             <TabIndicator
               mt="-1.5px"

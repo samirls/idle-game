@@ -17,9 +17,9 @@ import {
   SliderFilledTrack,
   SliderThumb,
 } from "@chakra-ui/react";
-import { IoVolumeHigh, IoVolumeMute } from "react-icons/io5";
+import { FaGear } from "react-icons/fa6";
 
-interface VolumeModalProps {
+interface OptionsModalProps {
   toggleMute: () => void;
   muted: boolean;
   backgroundMusicVolume: number;
@@ -28,9 +28,11 @@ interface VolumeModalProps {
   setClickSoundVolume: React.Dispatch<React.SetStateAction<number>>;
   manyCoinsVolume: number;
   setManyCoinsVolume: React.Dispatch<React.SetStateAction<number>>;
+  animation: boolean;
+  setAnimation: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function VolumeModal({
+export default function OptionsModal({
   toggleMute,
   muted,
   backgroundMusicVolume,
@@ -39,7 +41,10 @@ export default function VolumeModal({
   setClickSoundVolume,
   manyCoinsVolume,
   setManyCoinsVolume,
-}: VolumeModalProps) {
+  animation,
+  setAnimation,
+}: OptionsModalProps) {
+
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -47,7 +52,7 @@ export default function VolumeModal({
       <IconButton
         colorScheme="blue"
         aria-label="Volume on/off"
-        icon={muted ? <IoVolumeMute /> : <IoVolumeHigh />}
+        icon={<FaGear />}
         fontSize="20px"
         size="sm"
         position="absolute"
@@ -59,21 +64,40 @@ export default function VolumeModal({
       <Modal isOpen={isOpen} onClose={onClose} size="lg" isCentered>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader fontSize='24px'>Volume Options</ModalHeader>
+          <ModalHeader fontSize="24px">Options</ModalHeader>
           <ModalCloseButton />
-          <ModalBody >
+          <ModalBody>
             <FormControl
               display="flex"
               alignItems="center"
               justifyContent="space-between"
             >
-              <FormLabel htmlFor="email-alerts" mb="0" fontSize='20px'>
+              <FormLabel htmlFor="email-alerts" mb="0" fontSize="20px">
                 Disable / Enable all sounds
               </FormLabel>
               <Switch onChange={toggleMute} isChecked={!muted} />
             </FormControl>
+            <FormControl
+              display="flex"
+              alignItems="center"
+              justifyContent="space-between"
+              pt="10px"
+            >
+              <FormLabel htmlFor="email-alerts" mb="0" fontSize="20px">
+                Disable / Enable title and toaster animations
+              </FormLabel>
+              <Switch
+                onChange={()=> setAnimation(!animation)}
+                isChecked={animation}
+              />
+            </FormControl>
             <FormControl display="flex" alignItems="center" pt="10px">
-              <FormLabel htmlFor="email-alerts" mb="0" width="200px" fontSize='20px'>
+              <FormLabel
+                htmlFor="email-alerts"
+                mb="0"
+                width="200px"
+                fontSize="20px"
+              >
                 Music
               </FormLabel>
               <Slider
@@ -91,7 +115,12 @@ export default function VolumeModal({
               </Slider>
             </FormControl>
             <FormControl display="flex" alignItems="center" pt="10px">
-              <FormLabel htmlFor="email-alerts" mb="0" width="200px" fontSize='20px'>
+              <FormLabel
+                htmlFor="email-alerts"
+                mb="0"
+                width="200px"
+                fontSize="20px"
+              >
                 Click Sound
               </FormLabel>
               <Slider
@@ -109,7 +138,12 @@ export default function VolumeModal({
               </Slider>
             </FormControl>
             <FormControl display="flex" alignItems="center" pt="10px">
-              <FormLabel htmlFor="email-alerts" mb="0" width="200px" fontSize='20px'>
+              <FormLabel
+                htmlFor="email-alerts"
+                mb="0"
+                width="200px"
+                fontSize="20px"
+              >
                 Factory Sound
               </FormLabel>
               <Slider

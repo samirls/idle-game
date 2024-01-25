@@ -61,7 +61,7 @@ export default function Statistics({
           justifyContent="center"
           className={kalam.className}
         >
-          Statistics
+          <Box>Statistics</Box>
         </Box>
       </Box>
       <Box display="flex" justifyContent="center" pt="30px">

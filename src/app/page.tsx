@@ -7,8 +7,9 @@ import GameDisplay from "@/components/GameDisplay";
 import { useEffect, useState } from "react";
 import { useToast } from "@chakra-ui/react";
 import { Howl } from "howler";
-import VolumeModal from "@/components/modals/volume/VolumeModal";
 import { frijole } from "./ui/fonts";
+import "animate.css";
+import OptionsModal from "@/components/modals/options/OptionsModal";
 
 export default function Home() {
   const toast = useToast();
@@ -19,9 +20,9 @@ export default function Home() {
   const [manyCoinsVolume, setManyCoinsVolume] = useState(0.3);
   const [muted, setMuted] = useState(false);
   const [clickPower, setClickPower] = useState(1);
-  const [clickPowerMultiplier, setClickPowerMultiplier] = useState(0)
-  const [clickPowerToDisplay, setClickPowerToDisplay] = useState(1)
-  const [money, setMoney] = useState(10000000000000);
+  const [clickPowerMultiplier, setClickPowerMultiplier] = useState(0);
+  const [clickPowerToDisplay, setClickPowerToDisplay] = useState(1);
+  const [money, setMoney] = useState(0);
   const [fifthUpgradeBought, setFifthUpgradeBought] = useState(false);
   const [sixthUpgradeDelay, setSixthUpgradeDelay] = useState(false);
   const [sixthUpgradeDelayTime, setSixthUpgradeDelayTime] = useState(90);
@@ -32,11 +33,10 @@ export default function Home() {
   const [goldFactoryLicense, setGoldFactoryLicense] = useState(false);
   const [moneyUpgradeDelay, setMoneyUpgradeDelay] = useState(1000);
   const [multiplyFactorToDisplay, setMultiplyFactorToDisplay] = useState(0);
-
+  const [animation, setAnimation] = useState(true);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const clickMoney = () => {
-
     let clickMultiplierUpdated: number;
 
     if (clickPowerMultiplier === 0) {
@@ -45,7 +45,6 @@ export default function Home() {
       clickMultiplierUpdated = clickPower * clickPowerMultiplier;
     }
 
-
     setMoney((prevMoney) => prevMoney + clickMultiplierUpdated);
     setClickPowerToDisplay(clickMultiplierUpdated);
 
@@ -53,24 +52,27 @@ export default function Home() {
       clickSound.play();
     }
 
-    toast({
-      position: "top-right",
-      duration: 1000,
-      render: () => (
-        <Box
-          color="gray.500"
-          p={3}
-          bg="#f6dd5e80"
-          fontWeight={700}
-          borderRadius="50px"
-          display="flex"
-          justifyContent="center"
-          border="5px solid #ffe32b80"
-        >
-          {`+ ${clickMultiplierUpdated.toLocaleString()} coins`}
-        </Box>
-      ),
-    });
+    if (animation) {
+      toast({
+        position: "top-right",
+        duration: 1000,
+        render: () => (
+          <Box
+            color="gray.500"
+            p={3}
+            bg="#f6dd5e80"
+            fontWeight={700}
+            borderRadius="50px"
+            display="flex"
+            justifyContent="center"
+            border="5px solid #ffe32b80"
+          >
+            {`+ ${clickMultiplierUpdated.toLocaleString()} coins`}
+          </Box>
+        ),
+      });
+    }
+
     setSixthUpgradeDelay(true);
     setTimeout(() => {
       setSixthUpgradeDelay(false);
@@ -94,24 +96,26 @@ export default function Home() {
         manyCoins.play();
       }
 
-      toast({
-        position: "top-right",
-        duration: 1000,
-        render: () => (
-          <Box
-            color="gray.500"
-            p={3}
-            bg="#f6e05e80"
-            fontWeight={700}
-            borderRadius="50px"
-            display="flex"
-            justifyContent="center"
-            border="5px solid #fbff2b80"
-          >
-            {`+ ${multiplyFactorFUUpdated.toLocaleString()} coins from factories`}
-          </Box>
-        ),
-      });
+      if (animation) {
+        toast({
+          position: "top-right",
+          duration: 1000,
+          render: () => (
+            <Box
+              color="gray.500"
+              p={3}
+              bg="#f6e05e80"
+              fontWeight={700}
+              borderRadius="50px"
+              display="flex"
+              justifyContent="center"
+              border="5px solid #fbff2b80"
+            >
+              {`+ ${multiplyFactorFUUpdated.toLocaleString()} coins from factories`}
+            </Box>
+          ),
+        });
+      }
     }
   };
 
@@ -134,7 +138,9 @@ export default function Home() {
 
   useEffect(() => {
     setClickSound(new Howl({ src: ["/coin.mp3"], volume: clickSoundVolume }));
-    setManyCoins(new Howl({ src: ["/many-coins.mp3"], volume: manyCoinsVolume }));
+    setManyCoins(
+      new Howl({ src: ["/many-coins.mp3"], volume: manyCoinsVolume })
+    );
 
     const backgroundMusic = new Howl({
       src: ["/music.mp3"],
@@ -147,8 +153,7 @@ export default function Home() {
     return () => {
       backgroundMusic?.stop();
     };
-
-  }, [ backgroundMusicVolume, clickSoundVolume, manyCoinsVolume, muted]);
+  }, [backgroundMusicVolume, clickSoundVolume, manyCoinsVolume, muted]);
 
   const toggleMute = () => {
     setMuted((prevMuted) => !prevMuted);
@@ -179,8 +184,22 @@ export default function Home() {
   return (
     <>
       <Box height="100vh">
-        <Box display="flex" justifyContent="center" pt="20px" fontSize="46px" className={frijole.className}>
-          $ Get RiCh $
+        <Box
+          display="flex"
+          justifyContent="center"
+          pt="20px"
+          fontSize="46px"
+          className={frijole.className}
+        >
+          <Box
+            className={
+              animation
+                ? "animate__animated animate__tada animate__infinite"
+                : ""
+            }
+          >
+            $ Get RiCh $
+          </Box>
         </Box>
         <Grid templateColumns="repeat(3, 1fr)" pt="50px">
           <Upgrades
@@ -226,7 +245,7 @@ export default function Home() {
             {fifthUpgradeBought ? "Press Enter or Click" : "Click for coins"}
           </Button>
         </Box>
-        <VolumeModal 
+        <OptionsModal
           toggleMute={toggleMute}
           muted={muted}
           backgroundMusicVolume={backgroundMusicVolume}
@@ -235,6 +254,8 @@ export default function Home() {
           setClickSoundVolume={setClickSoundVolume}
           manyCoinsVolume={manyCoinsVolume}
           setManyCoinsVolume={setManyCoinsVolume}
+          animation={animation}
+          setAnimation={setAnimation}
         />
       </Box>
     </>

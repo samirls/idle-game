@@ -51,6 +51,7 @@ export default function GameDisplay({
       icon: <FcDiploma2 />,
       description: "University Degree",
       color: "orange",
+      buttonColor: "orange",
       cost: 500,
       nextObjective: 2,
     },
@@ -59,6 +60,7 @@ export default function GameDisplay({
       icon: <GiGoldMine />,
       description: "Mine License",
       color: "yellow",
+      buttonColor: "orange",
       cost: 3000,
       nextObjective: 3,
       grantLicense: setMineLicense,
@@ -169,7 +171,7 @@ export default function GameDisplay({
         fontWeight={600}
         className={kalam.className}
       >
-        Actual Objective
+        <Box>Actual Objective</Box>
       </Box>
       <Box pt="25px">
         {objectives.map(
