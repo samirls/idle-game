@@ -4,7 +4,7 @@ import Upgrades from "@/components/Upgrades";
 import { Box, Button, Grid, IconButton } from "@chakra-ui/react";
 import Statistics from "@/components/Statistics";
 import GameDisplay from "@/components/GameDisplay";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useToast } from "@chakra-ui/react";
 import { Howl } from "howler";
 import { frijole } from "./ui/fonts";
@@ -35,8 +35,8 @@ export default function Home() {
   const [multiplyFactorToDisplay, setMultiplyFactorToDisplay] = useState(0);
   const [animation, setAnimation] = useState(true);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const clickMoney = () => {
+
+  const clickMoney = useCallback(() => {
     let clickMultiplierUpdated: number;
 
     if (clickPowerMultiplier === 0) {
@@ -77,7 +77,8 @@ export default function Home() {
     setTimeout(() => {
       setSixthUpgradeDelay(false);
     }, sixthUpgradeDelayTime);
-  };
+  }, [clickPower, clickPowerMultiplier, setMoney, setClickPowerToDisplay, clickSound, muted, animation, toast, sixthUpgradeDelayTime]);
+
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const moneyEvery1s = () => {
@@ -170,16 +171,8 @@ export default function Home() {
     return () => {
       clearInterval(intervalId);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    factoryUpgradeBought,
-    moneyUpgradeValue,
-    multiplyFactorFU,
-    muted,
-    moneyUpgradeDelay,
-    manyCoinsVolume,
-    animation,
-  ]);
+
+  }, [factoryUpgradeBought, moneyUpgradeValue, multiplyFactorFU, muted, moneyUpgradeDelay, manyCoinsVolume, animation, moneyEvery1s]);
 
   return (
     <>

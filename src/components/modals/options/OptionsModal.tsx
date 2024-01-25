@@ -16,6 +16,7 @@ import {
   SliderTrack,
   SliderFilledTrack,
   SliderThumb,
+  Box,
 } from "@chakra-ui/react";
 import { FaGear } from "react-icons/fa6";
 
@@ -47,7 +48,7 @@ export default function OptionsModal({
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  console.log(manyCoinsVolume)
+
 
   return (
     <>
@@ -75,9 +76,9 @@ export default function OptionsModal({
               justifyContent="space-between"
             >
               <FormLabel htmlFor="email-alerts" mb="0" fontSize="20px">
-                Disable / Enable all sounds
+                Mute sounds
               </FormLabel>
-              <Switch onChange={toggleMute} isChecked={!muted} />
+              <Switch onChange={toggleMute} isChecked={muted} />
             </FormControl>
             <FormControl
               display="flex"
@@ -86,13 +87,14 @@ export default function OptionsModal({
               pt="10px"
             >
               <FormLabel htmlFor="email-alerts" mb="0" fontSize="20px">
-                Disable / Enable title and toaster animations
+                Disable title and toaster animations
               </FormLabel>
               <Switch
                 onChange={()=> setAnimation(!animation)}
-                isChecked={animation}
+                isChecked={!animation}
               />
             </FormControl>
+            <Box fontSize="24px" pt='25px' fontWeight='400' display='flex' justifyContent='center' mb='-10px'>Volume</Box>
             <FormControl display="flex" alignItems="center" pt="10px">
               <FormLabel
                 htmlFor="email-alerts"
