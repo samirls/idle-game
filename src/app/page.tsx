@@ -80,8 +80,7 @@ export default function Home() {
   }, [clickPower, clickPowerMultiplier, setMoney, setClickPowerToDisplay, clickSound, muted, animation, toast, sixthUpgradeDelayTime]);
 
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const moneyEvery1s = () => {
+  const moneyEvery1s = useCallback(() => {
     if (factoryUpgradeBought) {
       let multiplyFactorFUUpdated: number;
 
@@ -118,7 +117,8 @@ export default function Home() {
         });
       }
     }
-  };
+  }, [factoryUpgradeBought, moneyUpgradeValue, multiplyFactorFU, setMoney, setMultiplyFactorToDisplay, manyCoins, muted, animation, toast]);
+
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
