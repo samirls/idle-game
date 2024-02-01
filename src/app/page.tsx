@@ -142,7 +142,7 @@ export default function Home() {
     );
 
     const backgroundMusic = new Howl({
-      src: ["/music.mp3"],
+      src: ["/early-morning.mp3"],
       autoplay: true,
       loop: true,
       volume: backgroundMusicVolume,
